@@ -1,2 +1,4 @@
-# C-
-2023_C++:从零开始的进阶道路
+# 30 Days:a start
+一只小菜鸡2023的C++入门之路！
+#Special Thanks
+特别鸣谢SBN~
