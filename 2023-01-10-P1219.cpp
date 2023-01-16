@@ -1,134 +1,134 @@
-////#include<iostream>
-////#include<cstdio>
-////using namespace std;
-////int ans[13],n;
-////bool column[13], diagonal_1[25], diagonal_2[25];//¶Ô½ÇÏß¸öÊý£¨n-1£©¡Á2+1
-////int num = 0;
-////
-////void dfs(int row) {
-////	if (row == n) {
-////		num++;
-////		if (num == 1 || num == 2 || num == 3) {
-////			for (int i = 0; i < n; i++) {
-////				cout << ans[i] << " ";
-////			}
-////			cout << endl;
-////		}
-////		return;
-////	}
-////	int i = row;//ÕâÀï£ºÖ®Ç°Ð´³Éfor(int i=row;i<n;i++)ÁË£¬ÊÇÒòÎªÃ»ÓÐ±ê¼ÇÐÐÊÇ·ñ³åÍ»ÓÖÃ»ÓÐ°´ÕÕË³ÐòÒÀ´ÎÌîÈëÐÐ!
-////	for (int j = 0; j < n; j++) {
-////		if (i - j < 0) {
-////			if (column[j] == false && diagonal_1[i + j] == false && diagonal_2[i - j + (n - 1) * 2 + 1] == false) {
-////				ans[i] = j + 1;
-////				column[j] = true;
-////				diagonal_1[i + j] = true;
-////				diagonal_2[i - j + (n - 1) * 2 + 1] = true;
-////				dfs(i + 1);
-////				column[j] = false;
-////				diagonal_1[i + j] = false;
-////				diagonal_2[i - j + (n - 1) * 2 + 1] = false;
-////			}
-////		}
-////		else {
-////			if (column[j] == false && diagonal_1[i + j] == false && diagonal_2[i - j] == false) {
-////				ans[i] = j + 1;
-////				column[j] = true;
-////				diagonal_1[i + j] = true;
-////				diagonal_2[i - j] = true;
-////				dfs(i + 1);
-////				column[j] = false;
-////				diagonal_1[i + j] = false;
-////				diagonal_2[i - j] = false;
-////			}
-////		}
-////	}
-////	return;
-////}
-////
-////int main() {
-////	for (int i = 0; i < 13; i++) {
-////		ans[i] = 0;
-////		column[i] = false;
-////	}
-////
-////	for (int i = 0; i < 25; i++) {
-////		diagonal_1[i] = false;
-////		diagonal_2[i] = false;
-////	}
-////
-////	cin >> n;
-////	dfs(0);
-////	cout << num;
-////
-////	return 0;
-////}
-//
-////³£Êý¼¶ÓÅ»¯£ºÎ»ÔËËã
-///*
-//1.»ñÈ¡µÚiÎ»µÄÊý×Ö£º£¨a >> i£©& 1 »òÕß a & (1<<i) ÆäÖÐµÄiÓ¦¸ÃÊÇ¶àÉÙÎ»µÄÒâË¼¡£
-//2.ÉèÖÃµÚiÎ»Îª1£ºa=a | (1<<i) ¼Ç×¡µÄÊÇ1<<iÒ²¾ÍÊÇËµÎª1×óÒÆiÎ»ºóµÄÊý×Ö¡£
-//3.ÉèÖÃµÚiÎ»Îª0£ºa=a & (~(1<<i))
-//*/
-//#include<iostream>
-//#include<cstdio>
-//using namespace std;
-//int ans[13], n;
-//int column=0,diagonal_1=0, diagonal_2=0;//¶Ô½ÇÏß¸öÊý£¨n-1£©¡Á2+1
-//int num = 0;
-//
-//void dfs(int row) {
-//	if (row == n) {
-//		num++;
-//		if (num == 1 || num == 2 || num == 3) {
-//			for (int i = 0; i < n; i++) {
-//				cout << ans[i] << " ";
-//			}
-//			cout << endl;
-//		}
-//		return;
-//	}
-//	int i = row;//ÕâÀï£ºÖ®Ç°Ð´³Éfor(int i=row;i<n;i++)ÁË£¬ÊÇÒòÎªÃ»ÓÐ±ê¼ÇÐÐÊÇ·ñ³åÍ»ÓÖÃ»ÓÐ°´ÕÕË³ÐòÒÀ´ÎÌîÈëÐÐ!
-//	for (int j = 0; j < n; j++) {
-//		if (i - j < 0) {
-//			int column_ = (column >> j) & 1;
-//			int diagonal_1_ = (diagonal_1 >> i + j) & 1;
-//			int diagonal_2_ = (diagonal_2 >> (i - j + (n - 1) * 2 + 1)) & 1;
-//			if (column_ == 0 && diagonal_1_ == 0 && diagonal_2_ == 0) {
-//				ans[i] = j + 1;
-//				column = column | (1 << j);
-//				diagonal_1 = diagonal_1 | (1 << (i+j));
-//				diagonal_2 = diagonal_2 | (1 << (i - j + (n - 1) * 2 + 1));
-//				dfs(i + 1);
-//				column = column & (~(1 << j));
-//				diagonal_1 = diagonal_1 & (~(1 << (i+j)));
-//				diagonal_2 = diagonal_2 & (~(1 << (i - j + (n - 1) * 2 + 1)));
-//			}
-//		}
-//		else {
-//			int column_ = (column >> j) & 1;
-//			int diagonal_1_ = (diagonal_1 >> i + j) & 1;
-//			int diagonal_2_ = (diagonal_2 >> (i - j)) & 1;
-//			if (column_ == 0 && diagonal_1_ == 0 && diagonal_2_ == 0) {
-//				ans[i] = j + 1;
-//				column = column | (1 << j);
-//				diagonal_1 = diagonal_1 | (1 << (i + j));
-//				diagonal_2 = diagonal_2 | (1 << (i - j));
-//				dfs(i + 1);
-//				column = column & (~(1 << j));
-//				diagonal_1 = diagonal_1 & (~(1 << (i + j)));
-//				diagonal_2 = diagonal_2 & (~(1 << (i - j)));
-//			}
-//		}
-//	}
-//	return;
-//}
-//
-//int main() {
-//
-//	cin >> n;
-//	dfs(0);
-//	cout << num;
-//
-//	return 0;
-//}
+//æ™®é€šåšæ³•
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int ans[13],n;
+bool column[13], diagonal_1[25], diagonal_2[25];//å¯¹è§’çº¿ä¸ªæ•°ï¼ˆn-1ï¼‰Ã—2+1
+int num = 0;
+
+void dfs(int row) {
+	if (row == n) {
+		num++;
+		if (num == 1 || num == 2 || num == 3) {
+			for (int i = 0; i < n; i++) {
+				cout << ans[i] << " ";
+			}
+			cout << endl;
+		}
+		return;
+	}
+	int i = row;//è¿™é‡Œï¼šä¹‹å‰å†™æˆfor(int i=row;i<n;i++)äº†ï¼Œæ˜¯å› ä¸ºæ²¡æœ‰æ ‡è®°è¡Œæ˜¯å¦å†²çªåˆæ²¡æœ‰æŒ‰ç…§é¡ºåºä¾æ¬¡å¡«å…¥è¡Œ!
+	for (int j = 0; j < n; j++) {
+		if (i - j < 0) {
+			if (column[j] == false && diagonal_1[i + j] == false && diagonal_2[i - j + (n - 1) * 2 + 1] == false) {
+				ans[i] = j + 1;
+				column[j] = true;
+				diagonal_1[i + j] = true;
+				diagonal_2[i - j + (n - 1) * 2 + 1] = true;
+				dfs(i + 1);
+				column[j] = false;
+				diagonal_1[i + j] = false;
+				diagonal_2[i - j + (n - 1) * 2 + 1] = false;
+			}
+		}
+		else {
+			if (column[j] == false && diagonal_1[i + j] == false && diagonal_2[i - j] == false) {
+				ans[i] = j + 1;
+				column[j] = true;
+				diagonal_1[i + j] = true;
+				diagonal_2[i - j] = true;
+				dfs(i + 1);
+				column[j] = false;
+				diagonal_1[i + j] = false;
+				diagonal_2[i - j] = false;
+			}
+		}
+	}
+	return;
+}
+
+int main() {
+	for (int i = 0; i < 13; i++) {
+		ans[i] = 0;
+		column[i] = false;
+	}
+
+	for (int i = 0; i < 25; i++) {
+		diagonal_1[i] = false;
+		diagonal_2[i] = false;
+	}
+
+	cin >> n;
+	dfs(0);
+	cout << num;
+
+	return 0;
+}
+
+//å¸¸æ•°çº§ä¼˜åŒ–ï¼šä½è¿ç®—
+/*
+1.èŽ·å–ç¬¬iä½çš„æ•°å­—ï¼šï¼ˆa >> iï¼‰& 1 æˆ–è€… a & (1<<i) å…¶ä¸­çš„iåº”è¯¥æ˜¯å¤šå°‘ä½çš„æ„æ€ã€‚
+2.è®¾ç½®ç¬¬iä½ä¸º1ï¼ša=a | (1<<i) è®°ä½çš„æ˜¯1<<iä¹Ÿå°±æ˜¯è¯´ä¸º1å·¦ç§»iä½åŽçš„æ•°å­—ã€‚
+3.è®¾ç½®ç¬¬iä½ä¸º0ï¼ša=a & (~(1<<i))
+*/
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int ans[13], n;
+int column=0,diagonal_1=0, diagonal_2=0;//å¯¹è§’çº¿ä¸ªæ•°ï¼ˆn-1ï¼‰Ã—2+1
+int num = 0;
+
+void dfs(int row) {
+	if (row == n) {
+		num++;
+		if (num == 1 || num == 2 || num == 3) {
+			for (int i = 0; i < n; i++) {
+				cout << ans[i] << " ";
+			}
+			cout << endl;
+		}
+		return;
+	}
+	int i = row;//è¿™é‡Œï¼šä¹‹å‰å†™æˆfor(int i=row;i<n;i++)äº†ï¼Œæ˜¯å› ä¸ºæ²¡æœ‰æ ‡è®°è¡Œæ˜¯å¦å†²çªåˆæ²¡æœ‰æŒ‰ç…§é¡ºåºä¾æ¬¡å¡«å…¥è¡Œ!
+	for (int j = 0; j < n; j++) {
+		if (i - j < 0) {
+			int column_ = (column >> j) & 1;
+			int diagonal_1_ = (diagonal_1 >> i + j) & 1;
+			int diagonal_2_ = (diagonal_2 >> (i - j + (n - 1) * 2 + 1)) & 1;
+			if (column_ == 0 && diagonal_1_ == 0 && diagonal_2_ == 0) {
+				ans[i] = j + 1;
+				column = column | (1 << j);
+				diagonal_1 = diagonal_1 | (1 << (i+j));
+				diagonal_2 = diagonal_2 | (1 << (i - j + (n - 1) * 2 + 1));
+				dfs(i + 1);
+				column = column & (~(1 << j));
+				diagonal_1 = diagonal_1 & (~(1 << (i+j)));
+				diagonal_2 = diagonal_2 & (~(1 << (i - j + (n - 1) * 2 + 1)));
+			}
+		}
+		else {
+			int column_ = (column >> j) & 1;
+			int diagonal_1_ = (diagonal_1 >> i + j) & 1;
+			int diagonal_2_ = (diagonal_2 >> (i - j)) & 1;
+			if (column_ == 0 && diagonal_1_ == 0 && diagonal_2_ == 0) {
+				ans[i] = j + 1;
+				column = column | (1 << j);
+				diagonal_1 = diagonal_1 | (1 << (i + j));
+				diagonal_2 = diagonal_2 | (1 << (i - j));
+				dfs(i + 1);
+				column = column & (~(1 << j));
+				diagonal_1 = diagonal_1 & (~(1 << (i + j)));
+				diagonal_2 = diagonal_2 & (~(1 << (i - j)));
+			}
+		}
+	}
+	return;
+}
+
+int main() {
+	cin >> n;
+	dfs(0);
+	cout << num;
+
+	return 0;
+}
